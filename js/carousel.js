@@ -76,7 +76,7 @@ class Carousel {
     this.nextBtn.addEventListener("click", this.next.bind(this));
     this.indicatorsContainer.addEventListener(
       "click",
-      this._indicate.bind(this)
+      this.indicate.bind(this)
     );
   }
 
@@ -123,12 +123,10 @@ class Carousel {
   }
 
   indicate(e) {
-    consttarget = e.target;
-
-    if (target && target.classlist.contains("indicator")) {
+    if (e.target && e.target.classList.contains("indicator")) {
       this.pause();
 
-      this.gotoSlide(+target.dataset.slideTo);
+      this.gotoSlide(+event.target.dataset.slideTo);
     }
   }
 
@@ -165,3 +163,11 @@ class SwipeCarousel extends Carousel {
     this.swipeStartX - this.swipeEndX < -100 && this.prev();
   }
 }
+
+// indicate(e) {
+  //   let target = e.target;
+  //   if (target && target.classlist.contains("indicator")) {
+  //     this.pause();
+  //     this.gotoSlide(+target.dataset.slideTo);
+  //   }
+  // }
